@@ -102,11 +102,11 @@ if (!$query) {
 	</style>
 </head>
 <body>
-	<h1>Table 1</h1>
+	<h1>Trainers</h1>
 	<table class="data-table">
-		<caption class="title">Trainers</caption>
 		<thead>
 			<tr>
+				<th>Employee ID</th>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Certification</th>
@@ -127,12 +127,6 @@ if (!$query) {
 			$no++;
 		}?>
 		</tbody>
-		<tfoot>
-			<tr>
-				<th colspan="4">TOTAL</th>
-				<th><?=number_format($total)?></th>
-			</tr>
-		</tfoot>
 	</table>
 </body>
 </html>
