@@ -50,13 +50,12 @@ if (!$conn) {
 // 	}
 // }
 
-$select = $_POST['formClass'];
-
 $sql1 = "SELECT * FROM trainer";
 $sql2 = "SELECT T.* FROM trainer T WHERE T.employee_id IN(SELECT C.employee_id FROM class C WHERE C.type = '$_POST[formClass]')";
 $sql3 = "SELECT * FROM class";
 $sql4 = "SELECT * FROM membership";
-$sql5 = "SELECT * FROM member";
+// $sql5 = "SELECT * FROM member";
+$sql5 = "SELECT M1.* FROM member m1, class C1, member_has_class MC1 WHERE m1.member_id = MC1.member_id AND MC1.class_id = C1.class_id AND C1.type = '$_POST[formMember]'";
 
 // if(!empty($sql)) {
 // 	$sql3 .= ' WHERE ' .implode(' C.type ', $sql);
@@ -260,6 +259,24 @@ if (!$query) {
 		}?>
 		</tbody>
 	</table>
+	<p>
+	<h1>Member Taking Class Selector</h1>
+	<center><form action="" method="post">
+	<select name="formMember">
+		<option value="">Select...</option>
+		<option value="Aquatics">Aquatics</option>
+		<option value="Boxing">Boxing</option>
+		<option value="Cycling">Cycling</option>
+		<option value="Dance">Dance</option>
+		<option value="Pilates">Pilates</option>
+		<option value="Soccer">Soccer</option>
+		<option value="Weight Lifting">Weight Lifting</option>
+		<option value="Yoga">Yoga</option>
+		<option value="Zumba">Zumba</option>
+	</select>
+	<input type="submit" name="submit" value="Find"/>
+	</form></center>
+	</p>
 	<table>
 	<h1>Members</h1>
 	<table class="data-table">
