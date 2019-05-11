@@ -206,24 +206,6 @@ if (!$query) {
 		}?>
 		</tbody>
 	</table>
-	<p>
-	<h1>Class by Type Selector</h1>
-	<center><form action="" method="post">
-	<select name="formClass">
-		<option value="">Select...</option>
-		<option value="Aquatics">Aquatics</option>
-		<option value="Boxing">Boxing</option>
-		<option value="Cycling">Cycling</option>
-		<option value="Dance">Dance</option>
-		<option value="Pilates">Pilates</option>
-		<option value="Soccer">Soccer</option>
-		<option value="Weight Lifting">Weight Lifting</option>
-		<option value="Yoga">Yoga</option>
-		<option value="Zumba">Zumba</option>
-	</select>
-	<input type="submit" name="submit" value="Find"/>
-	</form></center>
-	</p>
 	<h1>Classes</h1>
 	<table class="data-table">
 		<thead>
