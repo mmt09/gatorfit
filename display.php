@@ -83,9 +83,11 @@ if (!$query) {
 	<option value="Boxing">Boxing</option>
 	<option value="Cycling">Cycling</option>
 	<option value="Dance">Dance</option>
+	<option value="Pilates">Pilates</option>
 	<option value="Soccer">Soccer</option>
-	<option value="WeightLifting">Weight Lifting</option>
+	<option value="Weight Lifting">Weight Lifting</option>
 	<option value="Yoga">Yoga</option>
+	<option value="Zumba">Zumba</option>
 </select>
 <input type="submit" name="submit" value="Find"/>
 </form></center>
