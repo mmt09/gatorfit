@@ -9,61 +9,62 @@ if (!$conn) {
 	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
 }
 
-if(isset($_POST['formClass']))
-{
-	$formClass = $_POST['formclass'];
-	$Aquatics = (isset($_POST['Aquatics']) ? $_POST['Aquatics']: null);
-	$Boxing = (isset($_POST['Boxing']) ? $_POST['Boxing']: null);
-	$Cycling = (isset($_POST['Cycling']) ? $_POST['Cycling']: null);
-	$Dance = (isset($_POST['Dance']) ? $_POST['Dance']: null);
-	$Soccer = (isset($_POST['Soccer']) ? $_POST['Soccer']: null);
-	$WeightLifting = (isset($_POST['Weight Lifting']) ? $_POST['Weight Lifting']: null);
-	$Yoga = (isset($_POST['Yoga']) ? $_POST['Yoga']: null);
+// if(isset($_POST['formClass']))
+// {
+// 	$formClass = $_POST['formclass'];
+// 	$Aquatics = (isset($_POST['Aquatics']) ? $_POST['Aquatics']: null);
+// 	$Boxing = (isset($_POST['Boxing']) ? $_POST['Boxing']: null);
+// 	$Cycling = (isset($_POST['Cycling']) ? $_POST['Cycling']: null);
+// 	$Dance = (isset($_POST['Dance']) ? $_POST['Dance']: null);
+// 	$Soccer = (isset($_POST['Soccer']) ? $_POST['Soccer']: null);
+// 	$WeightLifting = (isset($_POST['Weight Lifting']) ? $_POST['Weight Lifting']: null);
+// 	$Yoga = (isset($_POST['Yoga']) ? $_POST['Yoga']: null);
 	
-	unset($sql);
-	if($Aquatics) {
-		$sql[] = " = '$Aquatics' ";
-	}
+// 	unset($sql);
+// 	if($Aquatics) {
+// 		$sql[] = " = '$Aquatics' ";
+// 	}
 	
-	if($Boxing) {
-		$sql[] = " = '$Boxing' ";
-	}
+// 	if($Boxing) {
+// 		$sql[] = " = '$Boxing' ";
+// 	}
 	
-	if($Cycling) {
-		$sql[] = " = '$Cycling' ";
-	}
+// 	if($Cycling) {
+// 		$sql[] = " = '$Cycling' ";
+// 	}
 	
-	if($Dance) {
-		$sql[] = " = '$Dance' ";
-	}
+// 	if($Dance) {
+// 		$sql[] = " = '$Dance' ";
+// 	}
 	
-	if($Soccer) {
-		$sql[] = " = '$Soccer' ";
-	}
+// 	if($Soccer) {
+// 		$sql[] = " = '$Soccer' ";
+// 	}
 	
-	if($WeightLifting) {
-		$sql[] = " = '$WeightLifting' ";
-	}
+// 	if($WeightLifting) {
+// 		$sql[] = " = '$WeightLifting' ";
+// 	}
 	
-	if($Yoga) {
-		$sql[] = " = '$Yoga' ";
-	}
-}
+// 	if($Yoga) {
+// 		$sql[] = " = '$Yoga' ";
+// 	}
+// }
 
 $select = $_POST['formClass'];
 
 $sql1 = "SELECT * FROM trainer";
-$sql2 = "SELECT T.* FROM trainer T WHERE T.employee_id IN(SELECT C.employee_id FROM class C";
+$sql2 = "SELECT T.* FROM trainer T WHERE T.employee_id IN(SELECT C.employee_id FROM class C WHERE C.type = '$_POST[formClass]')";
 $sql3 = "SELECT * FROM class";
 $sql4 = "SELECT * FROM membership";
 $sql5 = "SELECT * FROM member";
 
-if(!empty($sql)) {
-	$sql3 .= ' WHERE ' .implode(' C.type ', $sql);
-	$sql1 = $sql3;
-}
+// if(!empty($sql)) {
+// 	$sql3 .= ' WHERE ' .implode(' C.type ', $sql);
+// 	$sql1 = $sql3;
+// }
 
 $query = mysqli_query($conn, $sql1);
+$query1 = mysqli_query($conn, $sql2);
 $query2 = mysqli_query($conn, $sql3);
 $query3 = mysqli_query($conn, $sql4);
 $query4 = mysqli_query($conn, $sql5);
@@ -189,7 +190,7 @@ if (!$query) {
 		<?php
 		$no 	= 1;
 		$total 	= 0;
-		while ($row = mysqli_fetch_array($query))
+		while ($row = mysqli_fetch_array($query1))
 		{
 			echo '<tr>
 					<td>'.$no.'</td>
